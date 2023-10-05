@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<training_data>
+  <Running>
+    <duration>30</duration>
+    <distance>0.65</distance>
+    <mean_speed>0.021666666666666667</mean_speed>
+    <calories>274.68</calories>
+  </Running>
+  <SportsWalking>
+    <duration>60</duration>
+    <distance>5.2</distance>
+    <mean_speed>0.08666666666666667</mean_speed>
+    <calories>8192.250969367771</calories>
+  </SportsWalking>
+  <Swimming>
+    <duration>45</duration>
+    <distance>0.069</distance>
+    <mean_speed>0.002777777777777778</mean_speed>
+    <calories>7443.750000000001</calories>
+  </Swimming>
+  <Running>
+    <duration>60</duration>
+    <distance>15.0</distance>
+    <mean_speed>10.0</mean_speed>
+    <calories>600</calories>
+  </Running>
+</training_data>

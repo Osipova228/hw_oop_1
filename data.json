@@ -1,0 +1,30 @@
+[
+    {
+        "type": "Running",
+        "duration": 30,
+        "distance": 0.65,
+        "mean_speed": 0.021666666666666667,
+        "calories": 274.68
+    },
+    {
+        "type": "SportsWalking",
+        "duration": 60,
+        "distance": 5.2,
+        "mean_speed": 0.08666666666666667,
+        "calories": 8192.250969367771
+    },
+    {
+        "type": "Swimming",
+        "duration": 45,
+        "distance": 0.069,
+        "mean_speed": 0.002777777777777778,
+        "calories": 7443.750000000001
+    },
+    {
+        "type": "Running",
+        "duration": 45,
+        "distance": 10.5,
+        "mean_speed": 7.0,
+        "calories": 400
+    }
+]
