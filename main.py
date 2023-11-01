@@ -2,6 +2,14 @@ from dataclasses import dataclass
 import json
 
 
+class HighMeanSpeedException(Exception):
+    """Собственный класс исключений для средней скорости в тренировках."""
+
+    def __init__(self, mean_speed, max_mean_speed):
+        self.mean_speed = mean_speed
+        self.max_mean_speed = max_mean_speed
+        super().__init__(f"Средняя скорость {mean_speed:.3f} очень большая. Максимально допустимая средняя скорость {max_mean_speed:.3f}")
+
 @dataclass
 class InfoMessage:
     """Информационное сообщение о тренировке."""
@@ -24,6 +32,7 @@ class Training:
     M_IN_KM: int = 1000
     LEN_STEP: float = 0.65
     MIN_IN_HOUR = 60
+    MAX_MEAN_SPEED = 10.0
 
     def __init__(self,
                  action: int,
@@ -40,6 +49,8 @@ class Training:
 
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
+        if self.get_distance() / self.duration > self.MAX_MEAN_SPEED:
+            raise HighMeanSpeedException(self.get_distance() / self.duration, self.MAX_MEAN_SPEED)
         return self.get_distance() / self.duration
 
     def get_spent_calories(self) -> float:
@@ -74,6 +85,7 @@ class SportsWalking(Training):
     CALORIES_SPEED_HEIGHT_MULTIPLIER: float = 0.029
     MSEC_IN_KMH: float = 0.278
     SM_IN_M: float = 100
+    # MAX_MEAN_SPEED = 10.0
 
     def __init__(self,
                  action: int,
@@ -84,6 +96,8 @@ class SportsWalking(Training):
         self.height = height
 
     def get_spent_calories(self) -> float:
+        # if self.get_mean_speed() > self.MAX_MEAN_SPEED:
+        #     raise HighMeanSpeedException(self.get_mean_speed(), self.MAX_MEAN_SPEED)
         return ((self.CALORIES_WEIGHT_MULTIPLIER * self.weight
                 + ((self.get_mean_speed() * self.MSEC_IN_KMH) ** 2
                    / (self.height / self.SM_IN_M))
